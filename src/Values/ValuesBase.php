@@ -1,6 +1,6 @@
 <?php
 
-namespace ZooplaRealTime\Values;
+namespace mehmetbulut\Zoopla\Values;
 
 use MyCLabs\Enum\Enum;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace ZooplaRealTime\Values;
+namespace mehmetbulut\Zoopla\Values;
 
 class DecorativeCondition extends ValuesBase
 {

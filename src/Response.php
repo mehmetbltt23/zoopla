@@ -1,6 +1,6 @@
 <?php
 
-namespace ZooplaRealtime;
+namespace mehmetbulut\Zoopla;
 
 class Response
 {

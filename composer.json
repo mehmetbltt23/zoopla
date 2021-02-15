@@ -1,6 +1,6 @@
 {
     "name": "mehmetbulut/zoopla",
-    "description": "PHP library for the Zoopla Real Time Property Datafeed Zoopla.",
+    "description": "PHP library for the Zoopla Real Time Property Datafeed Zoopla. https://realtime-listings.webservices.zpg.co.uk/docs/latest/documentation.html",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,14 +10,19 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
+        "php": "^7.2.5 || ^8.0",
         "ext-curl": "*",
-        "guzzlehttp/guzzle": "^7.0"
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.0",
+        "myclabs/php-enum": "1.*"
     },
-
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
     "autoload": {
         "psr-4": {
-            "ZooplaRealtime\\": "src/"
+            "mehmetbulut\\Zoopla\\": "src/",
+            "mehmetbulut\\Zoopla\\Tests\\": "tests"
         }
     }
 }

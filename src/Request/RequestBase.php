@@ -1,10 +1,10 @@
 <?php
 
-namespace ZooplaRealTime\Request;
+namespace mehmetbulut\Zoopla\Request;
 
-use ZooplaRealTime\SynthesizeTrait;
+use mehmetbulut\Zoopla\SynthesizeTrait;
 
-class RequestBase
+class RequestBase implements \JsonSerializable
 {
 	use SynthesizeTrait;
 
@@ -20,4 +20,28 @@ class RequestBase
 
 		return $property;
 	}*/
+
+	public function getJson()
+	{
+		return json_encode($this);
+	}
+
+	public function getArray()
+	{
+		return json_decode($this->getJson(),true);
+	}
+
+	public function getObject()
+	{
+		return json_decode($this->getJson(),false);
+	}
+
+	public function jsonSerialize() {
+		$data = [];
+		foreach ($this->arrSynthesize as $key => $value) {
+			$data[$key] = $this->{$key};
+		}
+
+		return $data;
+	}
 }

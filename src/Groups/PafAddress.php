@@ -1,10 +1,10 @@
 <?php
 
 
-namespace ZooplaRealTime\Groups;
+namespace mehmetbulut\Zoopla\Groups;
 
 
-use ZooplaRealTime\SynthesizeTrait;
+use mehmetbulut\Zoopla\SynthesizeTrait;
 
 class PafAddress
 {

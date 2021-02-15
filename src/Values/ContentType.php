@@ -1,8 +1,8 @@
 <?php
 
-namespace ZooplaRealTime\Values;
+namespace mehmetbulut\Zoopla\Values;
 
-class ContentType extends ValuesBase
+class ContentType
 {
 	const AudioTour = 'audio_tour';
 	const Brochure = 'brochure';

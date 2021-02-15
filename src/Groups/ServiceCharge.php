@@ -1,8 +1,10 @@
 <?php
 
-namespace ZooplaRealTime\Groups;
+namespace mehmetbulut\Zoopla\Groups;
 
-use ZooplaRealTime\SynthesizeTrait;
+use mehmetbulut\Zoopla\SynthesizeTrait;
+use mehmetbulut\Zoopla\Values\PricePerUnitAreaUnit;
+use mehmetbulut\Zoopla\Values\ServiceChargeFrequency;
 
 class ServiceCharge
 {
@@ -10,7 +12,7 @@ class ServiceCharge
 
 	protected $arrSynthesize = array(
 		'charge' => array('type' => 'number', 'required' => true),
-		'per_unit_area_units' => array('type' => 'enum', 'required' => true),
-		'frequency' => array('type' => 'enum', 'required' => true),
+		'per_unit_area_units' => array('type' => 'enum', 'class' => PricePerUnitAreaUnit::class,'required' => true),
+		'frequency' => array('type' => 'enum','class' => ServiceChargeFrequency::class, 'required' => true),
 	);
 }

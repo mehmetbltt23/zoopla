@@ -1,10 +1,11 @@
 <?php
 
 
-namespace ZooplaRealTime\Groups;
+namespace mehmetbulut\Zoopla\Groups;
 
 
-use ZooplaRealTime\SynthesizeTrait;
+use mehmetbulut\Zoopla\SynthesizeTrait;
+use mehmetbulut\Zoopla\Values\AreaUnit;
 
 class PricePerUnitArea
 {
@@ -12,6 +13,6 @@ class PricePerUnitArea
 
 	protected $arrSynthesize = array(
 		'price' => array('type' => 'number', 'required' => true),
-		'units' => array('type' => 'enum', 'required' => true)
+		'units' => array('type' => 'enum','class' => AreaUnit::class, 'required' => true)
 	);
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ZooplaRealtime;
+namespace mehmetbulut\Zoopla;
 
 use DateTime;
 
@@ -15,11 +15,6 @@ trait SynthesizeTrait
 		}
 	}
 
-	public function __call($a, $b)
-	{
-		dd($a);
-	}
-
 	public function __get($property)
 	{
 		if (property_exists($this, $property)) {
@@ -29,7 +24,7 @@ trait SynthesizeTrait
 				return $this->{$property};
 			} else {
 				$class = $this->arrSynthesize[$property]['class'];
-				return $this->{$property} = app($class);
+				return $this->{$property} = new $class();
 			}
 		}
 
@@ -63,10 +58,23 @@ trait SynthesizeTrait
 				break;
 
 			case 'enum':
+				$check = $param['class']::isValid($value);
 				break;
 
 			case 'array':
 				$check = is_array($value);
+				break;
+
+			case 'objectArray':
+				$check = is_array($value);
+				if ($value && is_array($value)) {
+					foreach ($value as $item) {
+						if (!$param['class']::isValid($item)) {
+							$check = false;
+							break;
+						}
+					}
+				}
 				break;
 
 			case 'object':
@@ -100,7 +108,7 @@ trait SynthesizeTrait
 
 		if (!$check) {
 			throw new \Exception('Invalid type '.$property.' '.$param['type'], Response::HTTP_BAD_REQUEST);
-		} else if ($param['required'] === true && empty($value)) {
+		} else if ($param['required'] === true && empty($value) && $param['type'] != 'boolean') {
 			throw new \Exception('Must be '.$property.' '.$param['type'], Response::HTTP_BAD_REQUEST);
 		} else if ($value) {
 			$this->{$property} = $value;

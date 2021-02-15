@@ -1,8 +1,9 @@
 <?php
 
-namespace ZooplaRealTime\Request;
+namespace mehmetbulut\Zoopla\Request;
 
-use ZooplaRealTime\Groups\Property;
+use mehmetbulut\Zoopla\Groups\Property;
+use mehmetbulut\Zoopla\Request\RequestBase;
 
 class SendProperty extends RequestBase
 {
@@ -13,4 +14,6 @@ class SendProperty extends RequestBase
 	protected $arrSynthesize = array(
 		'property' => array('type' => 'object','class' => Property::class, 'required' => true),
 	);
+
+	public $dsdfdfds = "fdsfsdf ndskfndlsjk fndsjlkf ndskj fnkjdsfnkds";
 }

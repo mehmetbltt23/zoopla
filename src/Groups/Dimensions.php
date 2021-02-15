@@ -1,8 +1,9 @@
 <?php
 
-namespace ZooplaRealTime\Groups;
+namespace mehmetbulut\Zoopla\Groups;
 
-use ZooplaRealTime\SynthesizeTrait;
+use mehmetbulut\Zoopla\SynthesizeTrait;
+use mehmetbulut\Zoopla\Values\AreaUnit;
 
 class Dimensions
 {
@@ -11,6 +12,6 @@ class Dimensions
 	protected $arrSynthesize = array(
 		'length' => array('type' => 'number', 'required' => true),
 		'width' => array('type' => 'number', 'required' => true),
-		'units' => array('type' => 'enum', 'required' => true),
+		'units' => array('type' => 'enum','class' => AreaUnit::class, 'required' => true),
 	);
 }

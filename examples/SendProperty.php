@@ -1,13 +1,11 @@
 <?php
 
-use ZooplaRealtime\ZooplaRealTime;
-
+require_once '../vendor/autoload.php';
 require 'config.php';
 
-$c = new ZooplaRealTime(CERT_SSL_KEY, CERT_PEM_FILE, CERT_PASS, ZooplaRealTime::TEST);
+$c = new ZooplaRealtime\ZooplaRealTime(CERT_SSL_KEY, CERT_PEM_FILE, CERT_PASS, ZooplaRealtime\ZooplaRealTime::TEST);
 
-$request = $c->createRequest(ZooplaRealTime::SendProperty);
-
+$request = $c->createRequest(ZooplaRealtime\ZooplaRealTime::SendProperty);
 
 $request->property->branch_reference = '123211';
 

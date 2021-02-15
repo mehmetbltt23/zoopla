@@ -1,8 +1,8 @@
 <?php
 
-namespace ZooplaRealTime\Request;
+namespace mehmetbulut\Zoopla\Request;
 
-use ZooplaRealTime\Values\DeletionReason;
+use mehmetbulut\Zoopla\Values\DeletionReason;
 
 class RemoveProperty extends RequestBase {
 

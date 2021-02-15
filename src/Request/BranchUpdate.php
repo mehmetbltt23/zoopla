@@ -1,8 +1,8 @@
 <?php
 
-namespace ZooplaRealTime\Request;
+namespace mehmetbulut\Zoopla\Request;
 
-use ZooplaRealTime\Groups\Location;
+use mehmetbulut\Zoopla\Groups\Location;
 
 class BranchUpdate extends RequestBase
 {

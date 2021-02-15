@@ -1,12 +1,12 @@
 <?php
 
-namespace ZooplaRealtime;
+namespace mehmetbulut\Zoopla;
 
-use ZooplaRealtime\Request\BranchUpdate;
-use ZooplaRealtime\Request\GetBranchPropertyList;
-use ZooplaRealtime\Request\RemoveProperty;
-use ZooplaRealtime\Request\SendProperty;
-use ZooplaRealtime\Response;
+use mehmetbulut\Zoopla\Request\BranchUpdate;
+use mehmetbulut\Zoopla\Request\GetBranchPropertyList;
+use mehmetbulut\Zoopla\Request\RemoveProperty;
+use mehmetbulut\Zoopla\Request\SendProperty;
+use mehmetbulut\Zoopla\Response;
 
 class ZooplaRealTime
 {

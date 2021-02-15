@@ -1,8 +1,8 @@
 <?php
 
-namespace ZooplaRealTime\Groups;
+namespace mehmetbulut\Zoopla\Groups;
 
-use ZooplaRealTime\SynthesizeTrait;
+use mehmetbulut\Zoopla\SynthesizeTrait;
 
 class GoogleStreetView
 {
@@ -10,7 +10,7 @@ class GoogleStreetView
 
 	protected $arrSynthesize = array(
 		'coordinates' => array('type' => 'object','class' => Coordinate::class, 'required' => true),
-		'heading' => array('type' => 'number', 'required' => true),
-		'pitch' => array('type' => 'number', 'required' => true),
+		'heading' => array('type' => 'float', 'required' => true),
+		'pitch' => array('type' => 'float', 'required' => true),
 	);
 }
