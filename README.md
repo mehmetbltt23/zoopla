@@ -21,7 +21,7 @@ Composer json
 }
 ```
 
-##Zoopla Documention
+## Zoopla Documention
 
 ```sh
 https://realtime-listings.webservices.zpg.co.uk/docs/latest/documentation.html
