@@ -13,19 +13,11 @@ class PropertyDeleteTest extends TestCase
 	protected function setUp(): void
 	{
 		parent::setUp();
-
-		define('CERT_SSL_KEY', './zoopla/test/mycert.crt');
-
-		define('CERT_SSL_PASS', null);
-
-		define('CERT_PEM_FILE', './zoopla/test/private.pem');
-
-		define('CERT_PASS', null);
 	}
 
 	public function testSendPropertyParams()
 	{
-		$c = new ZooplaRealTime(CERT_SSL_KEY, CERT_SSL_PASS, CERT_PEM_FILE, CERT_PASS, ZooplaRealTime::TEST);
+		$c = new ZooplaRealTime('./zoopla/test/mycert.crt', null, './zoopla/test/private.pem', null, ZooplaRealTime::TEST);
 
 		$request = $c->createRequest(ZooplaRealTime::RemoveProperty);
 

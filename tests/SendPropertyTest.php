@@ -2,7 +2,6 @@
 
 namespace mehmetbulut\Zoopla\Tests;
 
-use JsonSchema\Validator;
 use mehmetbulut\Zoopla\Groups\Content;
 use mehmetbulut\Zoopla\Groups\Description;
 use mehmetbulut\Zoopla\Request\SendProperty;
@@ -26,9 +25,7 @@ use mehmetbulut\Zoopla\Values\PostCodeType;
 use mehmetbulut\Zoopla\Values\PriceQualifier;
 use mehmetbulut\Zoopla\Values\PricingRentFrequency;
 use mehmetbulut\Zoopla\Values\PropertyType;
-use mehmetbulut\Zoopla\Values\Frequency;
 use mehmetbulut\Zoopla\Values\RentalTerm;
-use mehmetbulut\Zoopla\Values\RentalTermUnit;
 use mehmetbulut\Zoopla\Values\TenantEligibilityDss;
 use mehmetbulut\Zoopla\Values\TenantEligibilityStudent;
 use mehmetbulut\Zoopla\Values\Tenure;
@@ -41,19 +38,11 @@ class SendPropertyTest extends TestCase
 	protected function setUp(): void
 	{
 		parent::setUp();
-
-		define('CERT_SSL_KEY', './zoopla/test/mycert.crt');
-
-		define('CERT_SSL_PASS', null);
-
-		define('CERT_PEM_FILE', './zoopla/test/private.pem');
-
-		define('CERT_PASS', null);
 	}
 
 	public function testSendPropertyParams()
 	{
-		$c = new ZooplaRealTime(CERT_SSL_KEY, CERT_SSL_PASS, CERT_PEM_FILE, CERT_PASS, ZooplaRealTime::TEST);
+		$c = new ZooplaRealTime('./zoopla/test/mycert.crt', null, './zoopla/test/private.pem', null, ZooplaRealTime::TEST);
 
 		$request = $c->createRequest(ZooplaRealTime::SendProperty);
 

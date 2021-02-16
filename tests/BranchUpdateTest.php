@@ -24,7 +24,7 @@ class BranchUpdateTest extends TestCase
 
 	public function testSendPropertyParams()
 	{
-		$c = new ZooplaRealTime(CERT_SSL_KEY, CERT_SSL_PASS, CERT_PEM_FILE, CERT_PASS, ZooplaRealTime::TEST);
+		$c = new ZooplaRealTime('./zoopla/test/mycert.crt', null, './zoopla/test/private.pem', null, ZooplaRealTime::TEST);
 
 		$request = $c->createRequest(ZooplaRealTime::BranchUpdate);
 
