@@ -1,14 +1,14 @@
 # Zoopla Realtime Api
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/mehmetbulut/zoopla.svg?style=flat-square)](https://packagist.org/packages/mehmetbulut/zoopla)
-[![Build Status](https://travis-ci.org/mehmetbltt23/zoopla.svg?branch=main?style=flat-square)](https://travis-ci.org/mehmetbltt23/zoopla)
+[![Build Status](https://travis-ci.org/mehmetbltt23/zoopla.svg?branch=main&style=flat-square)](https://travis-ci.org/mehmetbltt23/zoopla)
 [![codecov](https://codecov.io/gh/mehmetbltt23/zoopla/branch/main/graph/badge.svg?token=HA1OF3A3WQ&style=flat-square)](https://codecov.io/gh/mehmetbltt23/zoopla)
 
 ## Requirements
 1. php >= 7.2
 2. Zoopla PEM and CERT files
 
-## Install
+## Install 
 
 To install with Composer:
 
