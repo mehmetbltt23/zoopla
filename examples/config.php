@@ -1,7 +1,9 @@
 <?php
 
-define('CERT_SSL_KEY','fdsfdsf');
+define('CERT_SSL_KEY', './zoopla/test/mycert.crt');
 
-define('CERT_PEM_FILE',' fds fdsf ds');
+define('CERT_SSL_PASS', null);
 
-define('CERT_PASS',' fdsfdsfds');
+define('CERT_PEM_FILE', './zoopla/test/private.pem');
+
+define('CERT_PASS', null);

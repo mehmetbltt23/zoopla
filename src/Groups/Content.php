@@ -15,7 +15,7 @@ class Content
 		'caption' => array('type' => 'string', 'required' => true),
 	);
 
-	public function __construct(string $url, string $media_type, string $caption)
+	public function __construct(string $url, $media_type, string $caption)
 	{
 		$this->url = $url;
 		$this->type = $media_type;

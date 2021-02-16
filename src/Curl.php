@@ -5,32 +5,22 @@ namespace mehmetbulut\Zoopla;
 class Curl
 {
 	/**
-	 * @param $data
-	 * @param $str_url
-	 * @param $str_ssl_key
-	 * @param $str_cert_file
-	 * @param $str_cert_pass
-	 * @param $profile
-	 * @param false $zpg_listing_e_tag
+	 * @param array $params
+	 * @param false $bool_debug
 	 * @return mixed|null
+	 * @throws \GuzzleHttp\Exception\GuzzleException
 	 */
-	public static function send($data, $str_url, $str_ssl_key, $str_cert_file, $str_cert_pass, $profile, $zpg_listing_e_tag = false)
+	public static function send(array $params, $bool_debug = false)
 	{
 		$client = new \GuzzleHttp\Client();
 
-		$headers = [
-			'Content-Type' => 'application/json; profile='.$profile,
-		];
-
-		if ($zpg_listing_e_tag) {
-			$headers['ZPG-Listing-ETag'] = md5(serialize($data));
-		}
-		$response = $client->post($str_url, [
-			'headers' => $headers,
-			'json' => $data,
-			'ssl_key' => $str_ssl_key,
-			'cert' => [$str_cert_file, $str_cert_pass],
+		$response = $client->post($params['url'], [
+			'headers' => $params['headers'],
+			'json' => $params['data'],
+			'ssl_key' => [$params['ssl_key'],$params['ssl_password']],
+			'cert' => [$params['cert_file'],$params['cert_password']],
 			'verify' => true,
+			'debug' => $bool_debug,
 			'http_errors' => false
 		])
 			->getBody()

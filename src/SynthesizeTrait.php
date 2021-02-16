@@ -77,6 +77,17 @@ trait SynthesizeTrait
 				}
 				break;
 
+			case 'objectString':
+				$check = false;
+				if ($value) {
+					if (is_string($value)) {
+						$check = true;
+					} else if (is_object($value) && $value instanceof $param['class']) {
+						$check = true;
+					}
+				}
+				break;
+
 			case 'object':
 				$check = is_object($value);
 				break;
@@ -108,8 +119,6 @@ trait SynthesizeTrait
 
 		if (!$check) {
 			throw new \Exception('Invalid type '.$property.' '.$param['type'], Response::HTTP_BAD_REQUEST);
-		} else if ($param['required'] === true && empty($value) && $param['type'] != 'boolean') {
-			throw new \Exception('Must be '.$property.' '.$param['type'], Response::HTTP_BAD_REQUEST);
 		} else if ($value) {
 			$this->{$property} = $value;
 		}

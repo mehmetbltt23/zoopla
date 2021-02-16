@@ -3,7 +3,7 @@
 namespace mehmetbulut\Zoopla\Groups;
 
 use mehmetbulut\Zoopla\SynthesizeTrait;
-use mehmetbulut\Zoopla\Values\AreaUnit;
+use mehmetbulut\Zoopla\Values\DimensionUnit;
 
 class Dimensions
 {
@@ -12,6 +12,6 @@ class Dimensions
 	protected $arrSynthesize = array(
 		'length' => array('type' => 'number', 'required' => true),
 		'width' => array('type' => 'number', 'required' => true),
-		'units' => array('type' => 'enum','class' => AreaUnit::class, 'required' => true),
+		'units' => array('type' => 'enum', 'class' => DimensionUnit::class, 'required' => true),
 	);
 }

@@ -2,7 +2,7 @@
 
 namespace mehmetbulut\Zoopla\Values;
 
-class ContentType
+class ContentType extends ValuesBase
 {
 	const AudioTour = 'audio_tour';
 	const Brochure = 'brochure';

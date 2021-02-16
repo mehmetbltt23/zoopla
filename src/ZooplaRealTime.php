@@ -6,13 +6,13 @@ use mehmetbulut\Zoopla\Request\BranchUpdate;
 use mehmetbulut\Zoopla\Request\GetBranchPropertyList;
 use mehmetbulut\Zoopla\Request\RemoveProperty;
 use mehmetbulut\Zoopla\Request\SendProperty;
-use mehmetbulut\Zoopla\Response;
 
 class ZooplaRealTime
 {
 	private $certFile;
-	private $certSSLKey;
-	private $certPass;
+	private $certPassword;
+	private $SSLKey;
+	private $SSLKeyPassword;
 	private $environment;
 
 	const TEST = 0;
@@ -23,11 +23,12 @@ class ZooplaRealTime
 	const GetBranchPropertyList = 3;
 	const BranchUpdate = 3;
 
-	public function __construct($cert_ssl_key, $str_cert_file, $str_cert_pass, $num_environment = self::TEST)
+	public function __construct($ssl_key, $ssl_key_password, $str_cert_file, $str_cert_pass, $num_environment = self::TEST)
 	{
-		$this->certFile = $cert_ssl_key;
-		$this->certSSLKey = $str_cert_file;
-		$this->certPass = $str_cert_pass;
+		$this->SSLKey = $str_cert_file;
+		$this->SSLKeyPassword = $str_cert_pass;
+		$this->certFile = $ssl_key;
+		$this->certPassword = $ssl_key_password;
 		$this->environment = $num_environment;
 	}
 
@@ -47,10 +48,26 @@ class ZooplaRealTime
 		}
 	}
 
-	public function send($objRequest, $strURLOverride = '', $zpg_listing_e_tag = false)
+	public function send($obj_request, bool $zpg_listing_e_tag = false, string $str_url_override = null, bool $bool_debug = false)
 	{
-		$str_URL = ($strURLOverride) ? $strURLOverride : $objRequest->getURL($this->environment);
+		$obj_request->validate($obj_request);
 
-		return Curl::send($objRequest, $str_URL, $this->certSSLKey, $this->certFile, $this->certPass, '', $zpg_listing_e_tag);
+		$str_url = ($str_url_override) ? $str_url_override : $obj_request->getURL($this->environment);
+
+		$params = [
+			'data' => $obj_request->getArray(),
+			'url' => $str_url,
+			'ssl_key' => $this->SSLKey,
+			'ssl_password' => $this->SSLKeyPassword,
+			'cert_file' => $this->certFile,
+			'cert_password' => $this->certPassword,
+			'headers' => ['Content-Type' => 'application/json; profile='.$obj_request->getSchema()],
+		];
+
+		if ($zpg_listing_e_tag) {
+			$params['headers']['ZPG-Listing-ETag'] = md5(serialize($obj_request->getArray()));
+		}
+
+		return Curl::send($params, $bool_debug);
 	}
 }

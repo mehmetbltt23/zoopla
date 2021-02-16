@@ -17,7 +17,7 @@ class Location
 		'postal_code' => array('type' => 'string', 'required' => true),
 		'country_code' => array('type' => 'string', 'required' => true),
 		'coordinates' => array('type' => 'object', 'class' => Coordinate::class, 'required' => true),
-		'paf_address' => array('type' => 'object', 'class' => Dimensions::class, 'required' => true),
+		'paf_address' => array('type' => 'object', 'class' => PafAddress::class, 'required' => true),
 		'paf_udprn' => array('type' => 'string', 'required' => true),
 	);
 }

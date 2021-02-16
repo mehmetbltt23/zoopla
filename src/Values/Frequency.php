@@ -2,7 +2,7 @@
 
 namespace mehmetbulut\Zoopla\Values;
 
-class ServiceChargeFrequency extends ValuesBase
+class Frequency extends ValuesBase
 {
 	const PerPersonPerWeek = 'per_person_per_week';
 	const PerWeek = 'per_week';
