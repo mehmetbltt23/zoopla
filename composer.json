@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.1.27",
         "ext-curl": "*",
         "ext-json": "*",
         "myclabs/php-enum": "1.*"
