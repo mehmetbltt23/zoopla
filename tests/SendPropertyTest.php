@@ -35,10 +35,6 @@ use PHPUnit\Framework\TestCase;
 
 class SendPropertyTest extends TestCase
 {
-	protected function setUp(): void
-	{
-		parent::setUp();
-	}
 
 	public function testSendPropertyParams()
 	{

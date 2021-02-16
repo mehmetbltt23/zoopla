@@ -8,11 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class BranchPropertyListTest extends TestCase
 {
-	protected function setUp(): void
-	{
-		parent::setUp();
-	}
-
 	public function testSendPropertyParams()
 	{
 		$c = new ZooplaRealTime('./zoopla/test/mycert.crt', null, './zoopla/test/private.pem', null, ZooplaRealTime::TEST);
