@@ -21,7 +21,7 @@ or
 Composer json
 ```json
 "require": {
-	"composer require mehmetbulut/zoopla" : "1.*"
+	"composer require mehmetbulut/zoopla" : "1.0"
 }
 ```
 
