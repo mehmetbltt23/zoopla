@@ -3,7 +3,7 @@
 namespace mehmetbulut\Zoopla;
 
 use mehmetbulut\Zoopla\Request\BranchUpdate;
-use mehmetbulut\Zoopla\Request\GetBranchPropertyList;
+use mehmetbulut\Zoopla\Request\BranchPropertyList;
 use mehmetbulut\Zoopla\Request\RemoveProperty;
 use mehmetbulut\Zoopla\Request\SendProperty;
 
@@ -20,8 +20,8 @@ class ZooplaRealTime
 
 	const SendProperty = 1;
 	const RemoveProperty = 2;
-	const GetBranchPropertyList = 3;
-	const BranchUpdate = 3;
+	const BranchPropertyList = 3;
+	const BranchUpdate = 4;
 
 	public function __construct($ssl_key, $ssl_key_password, $str_cert_file, $str_cert_pass, $num_environment = self::TEST)
 	{
@@ -32,19 +32,19 @@ class ZooplaRealTime
 		$this->environment = $num_environment;
 	}
 
-	public function createRequest($numRequestType)
+	public function createRequest(int $request_type)
 	{
-		switch ($numRequestType) {
+		switch ($request_type) {
 			case self::SendProperty:
 				return new SendProperty();
 			case self::RemoveProperty:
 				return new RemoveProperty();
-			case self::GetBranchPropertyList:
-				return new GetBranchPropertyList();
+			case self::BranchPropertyList:
+				return new BranchPropertyList();
 			case self::BranchUpdate:
 				return new BranchUpdate();
 			default:
-				throw new \Exception('Invalid Type', Response::HTTP_BAD_REQUEST);
+				throw new \Exception('Invalid Request Type', Response::HTTP_BAD_REQUEST);
 		}
 	}
 

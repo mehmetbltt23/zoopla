@@ -13,8 +13,11 @@ class BranchUpdate extends RequestBase
 	protected $schemaJsonFileName = 'branch-update.json';
 
 	protected $arrSynthesize = array(
-		'branch_reference' => array('type' => 'string', ),
-		'branch_name' => array('type' => 'string', ),
-		'location' => array('type' => 'object', 'class' => Location::class, ),
+		'branch_reference' => array('type' => 'string'),
+		'branch_name' => array('type' => 'string'),
+		'telephone' => array('type' => 'string'),
+		'email' => array('type' => 'email'),
+		'website' => array('type' => 'string'),
+		'location' => array('type' => 'object', 'class' => Location::class),
 	);
 }

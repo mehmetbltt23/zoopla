@@ -1,0 +1,178 @@
+{
+   "$schema" : "http://json-schema.org/draft-04/schema#",
+   "title" : "branch/update",
+   "type" : "object",
+   "additionalProperties" : false,
+   "id" : "http://realtime-listings.webservices.zpg.co.uk/docs/v1.2/schemas/branch/update.json",
+   "definitions" : {
+      "coordinates" : {
+         "type" : "object",
+         "additionalProperties" : false,
+         "properties" : {
+            "latitude" : {
+               "type" : "number",
+               "minimum" : -90,
+               "maximum" : 90
+            },
+            "longitude" : {
+               "type" : "number",
+               "minimum" : -180,
+               "maximum" : 180
+            }
+         },
+         "required" : [
+            "latitude",
+            "longitude"
+         ]
+      }
+   },
+   "properties" : {
+      "branch_name" : {
+         "type" : "string",
+         "pattern" : "^\\S(|(.|\\n)*\\S)\\Z"
+      },
+      "branch_reference" : {
+         "type" : "string",
+         "pattern" : "^\\S(|(.|\\n)*\\S)\\Z"
+      },
+      "email" : {
+         "type" : "string",
+         "pattern" : "@"
+      },
+      "location" : {
+         "type" : "object",
+         "additionalProperties" : false,
+         "properties" : {
+            "property_number_or_name" : {
+               "type" : [
+                  "integer",
+                  "string"
+               ],
+               "pattern" : "^\\S(|(.|\\n)*\\S)\\Z"
+            },
+            "street_name" : {
+               "type" : "string",
+               "pattern" : "^\\S(|(.|\\n)*\\S)\\Z"
+            },
+            "locality" : {
+               "type" : "string",
+               "pattern" : "^\\S(|(.|\\n)*\\S)\\Z"
+            },
+            "town_or_city" : {
+               "type" : "string",
+               "pattern" : "^\\S(|(.|\\n)*\\S)\\Z"
+            },
+            "county" : {
+               "type" : "string",
+               "pattern" : "^\\S(|(.|\\n)*\\S)\\Z"
+            },
+            "postal_code" : {
+               "type" : "string",
+               "pattern" : "^\\S(|(.|\\n)*\\S)\\Z"
+            },
+            "country_code" : {
+               "type" : "string",
+               "pattern" : "^[A-Z]{2}(-[A-Z0-9]{1,3})?$"
+            },
+            "coordinates" : {
+               "$ref" : "#/definitions/coordinates"
+            },
+            "paf_address" : {
+               "type" : "object",
+               "additionalProperties" : false,
+               "properties" : {
+                  "address_key" : {
+                     "type" : "string",
+                     "pattern" : "^[0-9]{8}$"
+                  },
+                  "organisation_key" : {
+                     "type" : "string",
+                     "pattern" : "^[0-9]{8}$"
+                  },
+                  "postcode_type" : {
+                     "enum" : [
+                        "L",
+                        "S"
+                     ]
+                  }
+               },
+               "required" : [
+                  "address_key",
+                  "organisation_key",
+                  "postcode_type"
+               ]
+            },
+            "paf_udprn" : {
+               "type" : "string",
+               "pattern" : "^[0-9]{8}$"
+            }
+         },
+         "required" : [
+            "town_or_city",
+            "country_code"
+         ],
+         "anyOf" : [
+            {
+               "required" : [
+                  "property_number_or_name"
+               ]
+            },
+            {
+               "required" : [
+                  "street_name"
+               ]
+            }
+         ]
+      },
+      "telephone": {
+         "type" : "string",
+         "pattern" : "[0-9]+"
+      },
+      "website" : {
+         "type" : "string",
+         "pattern" : "^[Hh][Tt][Tt][Pp][Ss]?://\\S+$"
+      }
+   },
+   "required" : [
+      "branch_reference",
+      "branch_name",
+      "location"
+   ],
+   "oneOf" : [
+      { "$ref" : "#/constraints/gb" },
+      { "$ref" : "#/constraints/overseas" }
+   ],
+   "constraints" : {
+      "gb" : {
+         "properties" : {
+            "location" : {
+               "properties" : {
+                  "country_code" : {
+                     "pattern" : "^GB"
+                  },
+                  "postal_code" : {
+                     "pattern" : "^[A-PR-UWYZ][A-HJ-Y]?[0-9][0-9A-HJKMNPR-Y]? [0-9][ABD-HJLNP-UW-Z]{2}$"
+                  }
+               },
+               "required" : [
+                  "postal_code"
+               ]
+            }
+         }
+      },
+      "overseas" : {
+         "properties" : {
+            "location" : {
+               "properties" : {
+                  "country_code" : {
+                     "not" : {
+                        "pattern" : "^GB"
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+

@@ -13,7 +13,7 @@ class RemoveProperty extends RequestBase {
 	protected $schemaJsonFileName = 'remove-property.json';
 
 	protected $arrSynthesize = array(
-		'listing_reference' => array('type' => 'string', ),
-		'deletion_reason' => array('type' => 'object','class' => DeletionReason::class, ),
+		'listing_reference' => array('type' => 'string'),
+		'deletion_reason' => array('type' => 'enum','class' => DeletionReason::class),
 	);
 }

@@ -2,9 +2,7 @@
 
 namespace mehmetbulut\Zoopla\Request;
 
-use mehmetbulut\Zoopla\Values\DeletionReason;
-
-class GetBranchPropertyList extends RequestBase {
+class BranchPropertyList extends RequestBase {
 
 	protected $path = '/listing/list';
 
@@ -13,6 +11,6 @@ class GetBranchPropertyList extends RequestBase {
 	protected $schemaJsonFileName = 'branch-property-listing.json';
 
 	protected $arrSynthesize = array(
-		'branch_reference' => array('type' => 'string', ),
+		'branch_reference' => array('type' => 'string'),
 	);
 }

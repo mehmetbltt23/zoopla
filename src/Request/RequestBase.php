@@ -5,6 +5,7 @@ namespace mehmetbulut\Zoopla\Request;
 use JsonSchema\Constraints\Constraint;
 use JsonSchema\Validator;
 use mehmetbulut\Zoopla\Exception\ZooplaValidationException;
+use mehmetbulut\Zoopla\Response;
 use mehmetbulut\Zoopla\SynthesizeTrait;
 use mehmetbulut\Zoopla\ZooplaRealTime;
 
@@ -47,7 +48,7 @@ class RequestBase implements \JsonSerializable
 	{
 		$data = [];
 		foreach ($this->arrSynthesize as $key => $value) {
-			if(isset($this->{$key}) && !empty($this->{$key})) {
+			if (isset($this->{$key}) && !empty($this->{$key})) {
 				$data[$key] = $this->{$key};
 			}
 		}
@@ -69,8 +70,8 @@ class RequestBase implements \JsonSerializable
 	public function getSchemaFile()
 	{
 		$local_path = 'schemas/'.$this->schemaJsonFileName;
-		if(!realpath($local_path)) {
-			file_put_contents($local_path,file_get_contents($this->schema));
+		if (!realpath($local_path)) {
+			file_put_contents($local_path, file_get_contents($this->schema));
 		}
 
 		return $local_path;
@@ -86,10 +87,10 @@ class RequestBase implements \JsonSerializable
 		$data = $this->getObject();
 
 		$validator = new Validator();
-		$validator->validate($data, (object)['$ref' => 'file://'.realpath($this->getSchemaFile())],Constraint::CHECK_MODE_VALIDATE_SCHEMA);
+		$validator->validate($data, (object)['$ref' => 'file://'.realpath($this->getSchemaFile())], Constraint::CHECK_MODE_VALIDATE_SCHEMA);
 
 		if (!$validator->isValid()) {
-			throw new ZooplaValidationException($validator->getErrors(),'JSON does not validate. Violations',400);
+			throw new ZooplaValidationException($validator->getErrors(), 'JSON does not validate. Violations', Response::HTTP_BAD_REQUEST);
 		}
 	}
 }

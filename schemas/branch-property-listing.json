@@ -1,0 +1,17 @@
+{
+   "$schema" : "http://json-schema.org/draft-04/schema#",
+   "title" : "listing/list",
+   "type" : "object",
+   "additionalProperties" : false,
+   "id" : "http://realtime-listings.webservices.zpg.co.uk/docs/v1.2/schemas/listing/list.json",
+   "properties" : {
+      "branch_reference" : {
+         "type" : "string",
+         "pattern" : "^\\S(|(.|\\n)*\\S)\\Z"
+      }
+   },
+   "required" : [
+      "branch_reference"
+   ]
+}
+
