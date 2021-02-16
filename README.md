@@ -5,7 +5,7 @@
 [![codecov](https://codecov.io/gh/mehmetbltt23/zoopla/branch/main/graph/badge.svg?token=HA1OF3A3WQ&style=flat-square)](https://codecov.io/gh/mehmetbltt23/zoopla)
 
 ## Requirements
-1. php >= 5.6
+1. php >= 7.2
 2. Zoopla PEM and CERT files
 
 ## Install
