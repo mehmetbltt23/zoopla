@@ -36,8 +36,6 @@ $c = new ZooplaRealTime(CERT_SSL_KEY, CERT_SSL_PASS, CERT_PEM_FILE, CERT_PASS, Z
 
 $request = $c->createRequest(ZooplaRealTime::SendProperty);
 
-$this->assertInstanceOf(SendProperty::class, $request);
-
 $request->branch_reference = '123211';
 $request->listing_reference = '123211';
 $request->life_cycle_status =LifeCycleStatus::Available;
@@ -177,12 +175,6 @@ $request->content = [
 	new Content('https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png', ContentType::Image, 'test'),
 	new Content('https://static.money.product.which.co.uk/money/media/images/600x400_ct/1092_EPC_Rating_09123307f0f8cd0e679ec8a5ac9835e7.png', ContentType::EpcGraph, 'epc')
 ];
-
-$this->assertIsArray($request->getArray());
-$this->assertNotEmpty($request->getArray());
-$this->assertIsObject($request->getObject());
-$this->assertJson($request->getJson());
-$this->assertNotEmpty($request->getJson());
 
 $d = $c->send($request,true,null,false);
 

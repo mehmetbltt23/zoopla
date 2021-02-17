@@ -10,8 +10,6 @@ $c = new ZooplaRealTime(CERT_SSL_KEY, CERT_SSL_PASS, CERT_PEM_FILE, CERT_PASS, Z
 
 $request = $c->createRequest(ZooplaRealTime::BranchUpdate);
 
-$this->assertInstanceOf(BranchUpdate::class, $request);
-
 $request->branch_reference = "new_branch";
 $request->branch_name = "New Branch";
 $request->telephone = "123123123";
@@ -31,13 +29,6 @@ $request->location->paf_address->address_key = '02341509';
 $request->location->paf_address->organisation_key ='00000000';
 $request->location->paf_address->postcode_type = PostCodeType::L;
 $request->location->paf_udprn = "00001234";
-
-
-$this->assertIsArray($request->getArray());
-$this->assertNotEmpty($request->getArray());
-$this->assertIsObject($request->getObject());
-$this->assertJson($request->getJson());
-$this->assertNotEmpty($request->getJson());
 
 $request->validate();
 
