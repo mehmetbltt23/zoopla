@@ -11,8 +11,8 @@ class ZooplaRealTime
 {
 	private $certFile;
 	private $certPassword;
-	private $SSLKey;
-	private $SSLKeyPassword;
+	private $pemFile;
+	private $pemFilePass;
 	private $environment;
 
 	const TEST = 0;
@@ -23,12 +23,12 @@ class ZooplaRealTime
 	const BranchPropertyList = 3;
 	const BranchUpdate = 4;
 
-	public function __construct($ssl_key, $ssl_key_password, $str_cert_file, $str_cert_pass, $num_environment = self::TEST)
+	public function __construct($cert_file, $cert_pass, $pem_file, $pem_file_pass, $num_environment = self::TEST)
 	{
-		$this->SSLKey = $str_cert_file;
-		$this->SSLKeyPassword = $str_cert_pass;
-		$this->certFile = $ssl_key;
-		$this->certPassword = $ssl_key_password;
+		$this->pemFile = $pem_file;
+		$this->pemFilePass = $pem_file_pass;
+		$this->certFile = $cert_file;
+		$this->certPassword = $cert_pass;
 		$this->environment = $num_environment;
 	}
 
@@ -57,8 +57,8 @@ class ZooplaRealTime
 		$params = [
 			'data' => $obj_request->getArray(),
 			'url' => $str_url,
-			'ssl_key' => $this->SSLKey,
-			'ssl_password' => $this->SSLKeyPassword,
+			'ssl_key' => $this->pemFile,
+			'ssl_password' => $this->pemFilePass,
 			'cert_file' => $this->certFile,
 			'cert_password' => $this->certPassword,
 			'headers' => ['Content-Type' => 'application/json; profile='.$obj_request->getSchema()],
