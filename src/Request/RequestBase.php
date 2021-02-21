@@ -70,7 +70,7 @@ class RequestBase implements \JsonSerializable
 	public function getSchemaFile()
 	{
 		$local_path = __DIR__.'/../../schemas/'.$this->schemaJsonFileName;
-		if (!realpath($local_path)) {
+		if (!file_exists($local_path)) {
 			file_put_contents($local_path, file_get_contents($this->schema));
 		}
 
