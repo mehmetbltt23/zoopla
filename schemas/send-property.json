@@ -318,7 +318,7 @@
                   ]
                },
                "heading" : {
-                  "type" : "string"
+                  "type" : "string" 
                },
                "text" : {
                   "type" : "string"
