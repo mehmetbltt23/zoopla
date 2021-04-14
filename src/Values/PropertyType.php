@@ -12,7 +12,7 @@ class PropertyType extends ValuesBase
 	const Chateau = 'chateau';
 	const Cottage = 'cottage';
 	const CountryHouse = 'country_house';
-	const Cetached = 'detached';
+	const Detached = 'detached';
 	const Detached_Bungalow = 'detached_bungalow';
 	const EndTerrace = 'end_terrace';
 	const Equestrian = 'equestrian';
