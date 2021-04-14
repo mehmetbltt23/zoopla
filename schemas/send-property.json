@@ -318,12 +318,10 @@
                   ]
                },
                "heading" : {
-                  "type" : "string",
-                  "pattern" : "^\\S(|(.|\\n)*\\S)\\Z"
+                  "type" : "string"
                },
                "text" : {
-                  "type" : "string",
-                  "pattern" : "^\\S(|(.|\\n)*\\S)\\Z"
+                  "type" : "string"
                }
             },
             "hint" : "In a 'detailed_description' entry, 'dimensions' requires that 'heading' is also set",
